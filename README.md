@@ -43,3 +43,10 @@ if __name__ == '__main__':
     sync_main()
 
 ```
+
+## Exception 异常
+如果直接使用使用`to_async`和`to_sync`报`RuntimeError: This event loop is already running`等一类的异常，可以在之前添加以下代码试试
+```python
+import revolving_asyncio
+revolving_asyncio.apply()
+```

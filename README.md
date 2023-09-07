@@ -1,7 +1,7 @@
 # revolving_asyncio
 同步异步互转工具
 
-1. 本项目依赖于[nest_asyncio](https://github.com/erdewit/nest_asyncio) 在嵌套场景下，需要对`asyncio`打补丁
+1. 本项目部分依赖于[nest_asyncio](https://github.com/erdewit/nest_asyncio), 在嵌套场景下，可能需要对`asyncio`打补丁
 2. 本项目提取于[ksrpc](https://github.com/wukan1986/ksrpc) 中的同步异步任意转换功能
 
 ## Installation安装
@@ -45,7 +45,9 @@ if __name__ == '__main__':
 ```
 
 ## Exception 异常
-如果直接使用使用`to_async`和`to_sync`报`RuntimeError: This event loop is already running`等一类的异常，可以在之前添加以下代码试试
+如果直接使用`to_async`和`to_sync`报`RuntimeError: This event loop is already running`等一类的异常，
+可以尝试添加以下代码
+
 ```python
 import revolving_asyncio
 revolving_asyncio.apply()

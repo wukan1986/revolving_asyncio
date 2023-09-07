@@ -1,17 +1,3 @@
-# revolving_asyncio
-同步异步互转工具
-
-1. 本项目依赖于[nest_asyncio](https://github.com/erdewit/nest_asyncio) 在嵌套场景下，需要对`asyncio`打补丁
-2. 本项目提取于[ksrpc](https://github.com/wukan1986/ksrpc) 中的同步异步任意转换功能
-
-## Installation安装
-```commandline
-pip install revolving_asyncio -U
-```
-
-## Usage使用
-See more [examples](examples)
-```python
 import asyncio
 import time
 
@@ -42,4 +28,10 @@ if __name__ == '__main__':
     asyncio.run(async_main())
     sync_main()
 
-```
+
+    async def async_main():
+        await asyncio.gather(do_sync_work('gather 1'),
+                             do_async_work('gather 2'))
+
+
+    asyncio.run(async_main())

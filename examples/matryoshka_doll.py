@@ -27,3 +27,11 @@ if __name__ == '__main__':
 
     asyncio.run(async_main())
     sync_main()
+
+
+    async def async_gather():
+        await asyncio.gather(async_main(),
+                             to_async(sync_main)())
+
+
+    asyncio.run(async_gather())

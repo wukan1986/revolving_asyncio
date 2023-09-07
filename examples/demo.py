@@ -29,9 +29,9 @@ if __name__ == '__main__':
     sync_main()
 
 
-    async def async_main():
+    async def async_gather():
         await asyncio.gather(do_sync_work('gather 1'),
                              do_async_work('gather 2'))
 
 
-    asyncio.run(async_main())
+    asyncio.run(async_gather())

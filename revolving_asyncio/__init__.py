@@ -2,12 +2,7 @@ import asyncio
 import inspect
 from functools import partial, wraps
 
-# RuntimeError: This event loop is already running， so apply patch
-import nest_asyncio
-
 from ._version import __version__
-
-nest_asyncio.apply()
 
 
 def to_async(f):
@@ -49,3 +44,10 @@ def to_sync(f):
         return loop.run_until_complete(f(*args, **kwargs))
 
     return decorated
+
+
+def apply():
+    # RuntimeError: This event loop is already running， so apply patch
+    # 如果只使用`to_async`或`to_sync`不报错，那就直接使用，反之需要提前`apply`
+    import nest_asyncio
+    nest_asyncio.apply()
